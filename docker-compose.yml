@@ -1,0 +1,8 @@
+services:
+  firstpetproject:
+    build:
+      context: .
+      dockerfile: firstPetProject/Dockerfile
+    ports:
+      - "8080:8080"      # Принимает запрос от 8080 (левый) и проксировать в докер 8080 (правый)
+    container_name: backend_web_api
