@@ -19,7 +19,7 @@ namespace firstPetProject.Core.Auth.BusinessLogic
         {
             if (await accountRepository.EmailExists(Email))
             {
-                throw new Exception("Данный пользователь уже существует");
+                throw new Exception("Данный пользователь уже существует!");
             }
             var user = new User
             {
@@ -35,7 +35,7 @@ namespace firstPetProject.Core.Auth.BusinessLogic
         public async Task<string> Login(string Email, string Password)
         {
             var user = await accountRepository.GetByEmail(Email)
-                       ?? throw new Exception("Пользователь не найден");
+                       ?? throw new Exception("Пользователь не найден!");
 
             var result = new PasswordHasher<User>().
                 VerifyHashedPassword(user, user.Password, Password);
@@ -46,7 +46,7 @@ namespace firstPetProject.Core.Auth.BusinessLogic
             }
             else
             {
-                throw new Exception("Неверный адрес электронной почты или пароль");
+                throw new Exception("Неверный адрес электронной почты или пароль!");
             }
 
 
